@@ -13,8 +13,8 @@ This project is a simple Django application following the Django `Styleguide`. I
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/yourusername/yourproject.git
-    cd yourproject
+    git clone https://github.com/AbanobashrafX/User_Mangement.git
+    cd User_Mangement
     ```
 
 2. Create and activate a virtual environment:
