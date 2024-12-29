@@ -48,6 +48,7 @@ This project is a simple Django application following the Django `Styleguide`. I
     python manage.py runserver
     ```
 
+
 ## Endpoints
 
 ### Create User
@@ -62,45 +63,29 @@ This project is a simple Django application following the Django `Styleguide`. I
 - **Method:** `GET`
 - **Description:** Lists all users.
 
+### List Active Users
+
+- **URL:** `/api/users/active/`
+- **Method:** `GET`
+- **Description:** Lists all active users.
+
 ### User Details
 
-- **URL:** `/api/users/user/<uuid:id>/`
+- **URL:** `/api/users/user/<uuid:uuid>/`
 - **Method:** `GET`
 - **Description:** Retrieves details of a specific user by UUID.
 
 ### Update User
 
-- **URL:** `/api/users/update/<uuid:id>/`
+- **URL:** `/api/users/user/<uuid:uuid>/update/`
 - **Method:** `PUT`
 - **Description:** Updates a specific user by UUID.
 
 ### Delete User
 
-- **URL:** `/api/users/delete/<uuid:id>/`
+- **URL:** `/api/users/user/<uuid:uuid>/delete/`
 - **Method:** `DELETE`
 - **Description:** Deletes a specific user by UUID.
-
-### User ViewSet Endpoints
-
-- **URL:** `/api/users/`
-- **Method:** `GET`
-- **Description:** Lists all users (ViewSet).
-
-- **URL:** `/api/users/<uuid:id>/`
-- **Method:** `GET`
-- **Description:** Retrieves details of a specific user by UUID (ViewSet).
-
-- **URL:** `/api/users/`
-- **Method:** `POST`
-- **Description:** Creates a new user (ViewSet).
-
-- **URL:** `/api/users/<uuid:id>/`
-- **Method:** `PUT`
-- **Description:** Updates a specific user by UUID (ViewSet).
-
-- **URL:** `/api/users/<uuid:id>/`
-- **Method:** `DELETE`
-- **Description:** Deletes a specific user by UUID (ViewSet).
 
 ## Models
 
