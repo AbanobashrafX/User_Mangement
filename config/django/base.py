@@ -5,10 +5,10 @@ from config.env import BASE_DIR, env
 # print('=====================================' , BASE_DIR)
 env.read_env(os.path.join(BASE_DIR, ".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-%^6#rwu(wqq*f$e7+4pe7(h=z0g6e!wglos*e6daw_ws_!sl5c"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG", default=False)
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
 
@@ -67,7 +67,6 @@ TEMPLATES = [
 ]
 
 ASGI_APPLICATION = "config.asgi.application"  # spell-checker: disable
-ASGI_APPLICATION = "config.asgi.application"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -119,14 +118,6 @@ BASE_URL_FOR_TasksManagement = f"http://tm-service:8000"
 # Elastic Search
 ELASTIC_HOST = "http://elasticsearch:9200/"
 
-# Celery configuration
-CELERY_BROKER_URL = "redis://redis:6379/0"
-CELERY_RESULT_BACKEND = "redis://redis:6379/0"
-
-CELERY_ACCEPT_CONTENT = ["json"]
-CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_SERIALIZER = "json"
-CELERY_TIMEZONE = "UTC"
 
 from config.settings.DB_Config import *  # noqa
 from config.settings.email_sending import *  # noqa
