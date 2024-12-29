@@ -19,3 +19,19 @@ def get_users(limit=None):
     if limit:
         queryset = queryset[:limit]
     return queryset
+
+
+def get_active_users(limit=None):
+    """
+    Retrieves a list of active users.
+    """
+    queryset = User.objects.filter(is_active=True)
+    if limit:
+        queryset = queryset[:limit]
+    return queryset
+
+def get_users_by_email(email):
+    """
+    Retrieves users matching the given email address.
+    """
+    return User.objects.filter(email=email)

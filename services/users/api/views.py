@@ -2,7 +2,7 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from ..selectors import get_user_by_id, get_users
+from ..selectors import get_active_users, get_user_by_id, get_users
 from ..services import delete_user, update_user
 from .serializers import UserDetailSerializer, UserSerializer
 
@@ -64,3 +64,13 @@ class UserDeleteView(APIView):
 
         delete_user(user)
         return Response(status=204)
+
+
+class UserActivateListView(APIView):
+    permission_classes = [permissions.IsAdminUser]
+    queryset = get_active_users()
+    serializer_class = UserSerializer
+
+    def get(self, request):
+        serializer = self.serializer_class(self.queryset.all(), many=True)
+        return Response(serializer.data)

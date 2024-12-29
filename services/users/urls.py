@@ -3,6 +3,7 @@ from django.urls.converters import UUIDConverter
 from rest_framework.routers import DefaultRouter
 
 from .api.views import (
+    UserActivateListView,
     UserCreateView,
     UserDeleteView,
     UserDetailsView,
@@ -13,6 +14,7 @@ from .api.views import (
 urlpatterns = [
     path("create/", UserCreateView.as_view(), name="user-create"),
     path("list/", UserListView.as_view(), name="user-list"),
+    path("active", UserActivateListView.as_view(), name="user-activate-list"),
     path("user/<uuid:uuid>/", UserDetailsView.as_view(), name="user-detail"),
     path("user/<uuid:uuid>/update/", UserUpdateView.as_view(), name="user-update"),
     path("user/<uuid:uuid>/delete/", UserDeleteView.as_view(), name="user-delete"),
