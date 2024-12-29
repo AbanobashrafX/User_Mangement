@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from ..selectors import get_active_users, get_user_by_id, get_users
-from ..services import delete_user, update_user
+from ..services import create_user, delete_user, update_user
 from .serializers import UserDetailSerializer, UserSerializer
 
 
@@ -24,7 +24,10 @@ class UserCreateView(APIView):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()  # You might want to use the create_user service here for more control
+        print()
+        create_user(
+            **serializer.validated_data
+        )  # You might want to use the create_user service here for more control
         return Response(serializer.data)
 
 

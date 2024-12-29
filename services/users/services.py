@@ -8,6 +8,7 @@ def create_user(username, password, **extra_fields):
     Creates a new user with the given credentials.
     """
     data = {"username": username, "password": make_password(password)}
+    print(data)
     user = User.objects.create_user(**data, **extra_fields)
     return user
 
@@ -16,8 +17,11 @@ def update_user(user, **kwargs):
     """
     Updates an existing user with the given data.
     """
+    password = kwargs.pop("password", None)
     for key, value in kwargs.items():
         setattr(user, key, value)
+    if password:
+        user.set_password(password)
     user.save()
     return user
 
